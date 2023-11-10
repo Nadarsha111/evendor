@@ -9,7 +9,7 @@ import {
   useUpdateEffect,
 } from "@chakra-ui/react";
 import TopNav from "../components/TopNav/TopNav";
-import HomeBanner from "../components/home/HomeBanner";
+import HomeBanner from "../components/Home/HomeBanner";
 import ProductPageLayout from "../components/ProductList/ProductPageLayout";
 import useUpdatecart from "../hooks/useUpdatecart";
 import { isError, useQuery } from "@tanstack/react-query";
