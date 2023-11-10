@@ -1,0 +1,12 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: #7C798E;
+
+}
+
+body::-webkit-scrollbar {
+  scrollbar-width: none;
+  /* for Firefox */
+  display: none;
+}
+

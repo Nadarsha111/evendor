@@ -1,0 +1,79 @@
+wrapping sheet
+frame (premium quality) 4*4
+hamper(wedding)
+giftbox
+
+/src
+  /components
+    /Admin
+      AdminNavbar.js
+      AdminSidebar.js
+      AdminPage.js
+    /Home
+      HomeNavbar.js
+      HomeBanner.js
+      ...
+    /ProductList
+      ProductList.js
+      ProductCard.js
+      ...
+    Footer.js
+  /pages
+    AdminPage.js
+    HomePage.js
+    ProductListPage1.js
+    ProductListPage2.js
+    ProductListPage3.js
+    ProductListPage4.js
+  App.js
+  index.js
+
+
+star rating 
+
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider, CSSReset } from "@chakra-ui/core";
+import Rating from "./Rating";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <CSSReset />
+      <Rating
+        size={48}
+        icon="star"
+        scale={5}
+        fillColor="gold"
+        strokeColor="grey"
+      />
+    </ThemeProvider>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
+
+
+////////////////////
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBYYGtEjeUPhDJChLflETNGhk6ajjetJV4",
+  authDomain: "evendor-c0f03.firebaseapp.com",
+  projectId: "evendor-c0f03",
+  storageBucket: "evendor-c0f03.appspot.com",
+  messagingSenderId: "456442687551",
+  appId: "1:456442687551:web:e9e9235ea797b7c011088a",
+  measurementId: "G-37NRJGPL7P"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);

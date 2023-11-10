@@ -1,0 +1,116 @@
+old code
+
+import {
+  Box,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Flex,
+  HStack,
+  Heading,
+  Icon,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { AiFillHeart, AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { Link as ReactRouterLink } from "react-router-dom";
+import { changeINPrice, formatPrice } from "../../hooks/priceRealated";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/cartControl";
+// eslint-disable-next-line react/prop-types
+const ProductCard = ({ value, title, price, oldprice, id, desc }) => {
+  const dispatch = useDispatch();
+  console.log(value);
+  const Products = () => {
+    dispatch(
+      addToCart({
+        id: id,
+        title: title,
+        desc: desc,
+        price: price,
+        img: value,
+      })
+    );
+  };
+
+  return (
+    <Card
+      w="260px"
+      h="375px"
+      bg="white"
+      borderRadius="20px"
+      variant="elevated"
+      shadow="lg"
+    >
+      <CardBody p="0" align="center" position="relative">
+        <Image
+          src={`${import.meta.env.VITE_REACT_API_UPLOAD_URL}${value}`}
+          alt="Green double couch with wooden legs"
+          borderRadius="lg"
+          objectFit="cover"
+          w="255px"
+          h="260px"
+        />
+        {/* <Icon
+          as={AiFillHeart}
+          position="absolute"
+          boxSize={6}
+          top={3}
+          right={3}
+          color="white"
+        /> */}
+        <Stack spacing="2" align="center" mt="5">
+          <Heading fontSize="16px" fontWeight="500">
+            {title}
+          </Heading>
+          {/* <Flex>
+            <Icon as={AiFillStar} color="#FFB703" boxSize={6} />
+            <Icon as={AiFillStar} color="#FFB703" boxSize={6} />
+            <Icon as={AiFillStar} color="#FFB703" boxSize={6} />
+            <Icon as={AiOutlineStar} color="#FFB703" boxSize={6} />
+            <Icon as={AiOutlineStar} color="#FFB703" boxSize={6} />
+          </Flex> */}
+          <HStack
+            spacing="2"
+            bg=""
+            justify="space-between"
+            w="full"
+            px="6"
+            align="end"
+          >
+            <Stack gap="0">
+              <Text fontWeight="500" fontSize="16px" align="start">
+                {formatPrice(price, "INR")}
+              </Text>
+              <Flex gap="1">
+                <Text as="s" fontSize="12px" color="grey">
+                  {formatPrice(oldprice || price + 20, "INR")}
+                </Text>
+                <Text fontSize="xs" color="green">
+                  {changeINPrice(price, oldprice || price + 20)}
+                </Text>
+              </Flex>
+            </Stack>
+
+            <Button
+              variant="outline"
+              fontWeight="500"
+              size="sm"
+              borderColor="#263A45"
+              fontSize="sm"
+              overflow="clip"
+              onClick={Products}
+            >
+              Add to cart
+            </Button>
+          </HStack>
+        </Stack>
+      </CardBody>
+    </Card>
+  );
+};
+
+export default ProductCard;
+
