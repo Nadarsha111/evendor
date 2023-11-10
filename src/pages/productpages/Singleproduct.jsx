@@ -49,26 +49,26 @@ const Singleproduct = () => {
   //   sigleproductpage(id)
   // );
   const [count, setCount] = useState(1);
-
-  const dispatch = useDispatch();
-  // const addingtocart = () => {
-  //   dispatch(
-  //     addToCart([
-  //       {
-  //         id: product.id,
-  //         title: product.attributes.title,
-  //         desc: product.attributes.desc,
-  //         price: product.attributes.price,
-  //         img: product.attributes.img.data.attributes.url,
-  //         oldprice: product.attributes.oldprice,
-  //         quantity: count,
-  //       },
-  //     ])
-  //   );
-  //   toastadded();
-  // };
-
+  
   const product = products.find((item) => item.id == id);
+  const dispatch = useDispatch();
+  const addingtocart = () => {
+    dispatch(
+      addToCart([
+        {
+          id: product.id,
+          title: product.attributes.title,
+          desc: product.attributes.desc,
+          price: product.attributes.price,
+          img: product.attributes.img.data.attributes.url,
+          oldprice: product.attributes.oldprice,
+          quantity: count,
+        },
+      ])
+    );
+    toastadded();
+  };
+
   console.log(product);
 
   const increment = () => {
